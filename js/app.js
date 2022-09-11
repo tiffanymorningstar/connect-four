@@ -28,9 +28,19 @@ function init () {
     null, null, null, null, null, null, null
   ]
   console.log(board)
-  turn = 1 //represents player X
+  turn = 1 
   winner = null
   render()
+}
+
+function render() {
+  board.forEach(function(opening, idx) {
+    if (opening === 1) {
+      opening[idx].textContent = "P"
+    } else if (slot === -1) {
+      opening[idx].textContent = "O"
+    }
+  })
 }
 
 
