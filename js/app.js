@@ -96,17 +96,17 @@ function render() {
 
   if (winner === null) {
     if (turn === 1) {
-      messageEls.textContent = "It is player 1's turn"
+      messageEls.textContent = "Player 1 - FIGHT!"
     } else {
-      messageEls.textContent = "It is player 2's turn"
+      messageEls.textContent = "Player 2 - FIGHT!"
     }
 
   } else if (winner === 'T') {
     messageEls.textContent = 'It is a Stalemate!'
   } else if (winner === 1) {
-    messageEls.textContent = 'Congrats Player 1, you won!'
+    messageEls.textContent = 'Player 1 wins, FLAWLESS VICTORY'
   } else if (winner === -1) {
-    messageEls.textContent = 'Congrats Player 2, you won!'
+    messageEls.textContent = 'Player 2 wins, FLAWLESS VICTORY'
   }
 
 }
