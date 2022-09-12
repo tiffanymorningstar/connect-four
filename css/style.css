@@ -17,17 +17,19 @@ body {
 }
 
 .flex-box-item-1 {
-  min-height: 100px;
+  min-height: 300px;
   order: 1;
 }
 
 .flex-box-item-2 {
-  min-height: 100px;
+  min-height: 300px;
   order: 2;
+  font-size: 30px;
+
 }
 
 .flex-box-item-3 {
-  min-height: 100px;
+  min-height: 300px;
   order: 3;
 }
 
@@ -86,16 +88,16 @@ div {
   border: 1px solid #000;
 }
 
-img {
+/* img {
   display: block;
   margin: auto;
-}
+} */
 
 h1 {
-  margin: 10px;
+  margin: 40px;
 }
 
 h2 {
   font-size: 25px;
-  margin: 10px;
+  margin: 20px;
 }
