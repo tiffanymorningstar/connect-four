@@ -122,11 +122,30 @@ function handleClick(evt) {
   board[opIdx] = turn
 
   turn = turn * -1
-  //winner = getWinner()
+  winner = getWinner()
   render()
 }
 
+function getWinner() {
+  let bestCombo = []
+  winningArray.forEach(function (combo) {
+    let comboValue = board[combo[0]]+ board [combo[1]] + board[combo[2]]+ board [combo[3]]
+    //Adding up opening positions, to use below to see if it equals four and there s a winner
+    bestCombo.push(Math.abs(comboValue))
+  })
+  //Why did we use Math.abs?
+//Using index to get a combo
 
+let winnersCombo = bestCombo.some(function(value){
+  return value === 4
+})
+  if (winnersCombo === true) {
+    return turn * -1
+  } else if (!board.some((value)=> value === null)){
+    return 'T'
+  }
+  return null
+}
 
 // 6b) Attach an event listener to the game board (you can do this to each // one of the existing `openingEls` OR add a new cached element reference // that will allow you to take advantage of event bubbling). On the // `'click'` event, it should call the `handleClick` function // you created in 6a. 
 // 6c) Obtain the index of the opening that was clicked by "extracting" the // index from an `id` assigned to the element in the HTML. Assign this // to a constant called `opIdx`. 
