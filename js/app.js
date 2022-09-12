@@ -1,11 +1,32 @@
 
 
 /*-------------------------------- Constants --------------------------------*/
+let winningArray = [
+  [0, 1, 2, 3], [41, 40, 39, 38], [7, 8, 9, 10],
+  [34, 33, 32, 31], [14, 15, 16, 17], [27, 26, 25, 24],
+  [21, 22, 23, 24], [20, 19, 18, 17], [28, 29, 30, 31],
+  [13, 12, 11, 10], [35, 36, 37, 38], [6, 5, 4, 3],
+  [0, 7, 14, 21], [41, 34, 27, 20], [1, 8, 15, 22],
+  [40, 33, 26, 19], [2, 9, 16, 23], [39, 32, 25, 18],
+  [3, 10, 17, 24], [38, 31, 24, 17], [4, 11, 18, 25],
+  [37, 30, 23, 16], [5, 12, 19, 26], [36, 29, 22, 15],
+  [6, 13, 20, 27], [35, 28, 21, 14], [0, 8, 16, 24],
+  [41, 33, 25, 17], [7, 15, 23, 31], [34, 26, 18, 10],
+  [14, 22, 30, 38], [27, 19, 11, 3], [35, 29, 23, 17],
+  [6, 12, 18, 24], [28, 22, 16, 10], [13, 19, 25, 31],
+  [21, 15, 9, 3], [20, 26, 32, 38], [36, 30, 24, 18],
+  [5, 11, 17, 23], [37, 31, 25, 19], [4, 10, 16, 22],
+  [2, 10, 18, 26], [39, 31, 23, 15], [1, 9, 17, 25],
+  [40, 32, 24, 16], [9, 7, 25, 33], [8, 16, 24, 32],
+  [11, 7, 23, 29], [12, 18, 24, 30], [1, 2, 3, 4],
+  [5, 4, 3, 2], [8, 9, 10, 11], [12, 11, 10, 9],
+  [15, 16, 17, 18], [19, 18, 17, 16], [22, 23, 24, 25],
+  [26, 25, 24, 23], [29, 30, 31, 32], [33, 32, 31, 30],
+  [36, 37, 38, 39], [40, 39, 38, 37], [7, 14, 21, 28],
+  [8, 15, 22, 29], [9, 16, 23, 30], [10, 17, 24, 31],
+  [11, 18, 25, 32], [12, 19, 26, 33], [13, 20, 27, 34]
+];
 
-const openingEls = document.querySelectorAll(".board > div")
-console.log(openingEls)
-
-const messageEls = document.querySelector("#message")
 
 /*---------------------------- Variables (state) ----------------------------*/
 
@@ -13,12 +34,22 @@ let board, turn, winner
 
 /*------------------------ Cached Element References ------------------------*/
 
+const openingEls = document.querySelectorAll(".board > div")
+console.log(openingEls)
+
+const messageEls = document.querySelector("#message")
+
+const boardEl = document.querySelector('.board')
+
 /*----------------------------- Event Listeners -----------------------------*/
+boardEl.addEventListener('click', handleClick)
 
 
 /*-------------------------------- Functions
 --------------------------------*/
-function init () {
+init()
+
+function init() {
   board = [
     null, null, null, null, null, null, null,
     null, null, null, null, null, null, null,
@@ -28,40 +59,75 @@ function init () {
     null, null, null, null, null, null, null
   ]
   console.log(board)
-  turn = 1 
+  turn = 1
   winner = null
   render()
 }
 
 function render() {
-  board.forEach(function(opening, idx) {
+  board.forEach(function (opening, idx) {
     if (opening === 1) {
-      opening[idx].textContent = "P"
-    } else if (slot === -1) {
-      opening[idx].textContent = "O"
+      openingEls[idx].textContent = "Z"
+    } else if (opening === -1) {
+      openingEls[idx].textContent = "Q"
     }
   })
+
+
+
+  if (winner === null) {
+    if (turn === 1) {
+      messageEls.textContent = "It is player 1's turn"
+    } else {
+      messageEls.textContent = "It is player 2's turn"
+    }
+
+  } else if (winner === 'T') {
+    messageEls.textContent = 'It is a Stalemate!'
+  } else if (winner === 1) {
+    messageEls.textContent = 'Congrats Player 1, you won!'
+  } else if (winner === -1) {
+    messageEls.textContent = 'Congrats Player 2, you won!'
+  }
+
+}
+
+function handleClick(evt) {
+  //console.log(evt.target)
+  let opIdx = parseInt(evt.target.id)
+  //console.log(opIdx)
+  //targeting id's of divs
+  //right now divs are strings, which is why we use parse int to turn into numbers
+
+  if (isNaN(opIdx)) {
+    return
+  }
+  //just returning if someone clicks outside of board
+  if (winner) {
+    return
+  }
+
+
+  if (board[opIdx]) {
+    return
+  }
+
+  if (board[opIdx + 7] !== 1 && board[opIdx + 7] !== -1) {
+    if (opIdx >= 35) {
+    } else {
+      return
+    }
+  }
+  
+  board[opIdx] = turn
+
+  turn = turn * -1
+  //winner = getWinner()
+  render()
 }
 
 
-// Store cached element references 
 
-// Step 3 - Upon loading, the game state should be initialized, and a function should be called to render this game state  3a) Create a function called `init`. 
-// 3b) Call this `init` function when the app loads. 
-// 3c) Set the `board` variable to an array containing nine `null`s to // represent empty squares. 
-// 3d) Set the `turn` to `1` - which will represent player X. 
-// 3e) Set the `winner` to `null`. 
-// 3f) Call a function called `render` at the end of the `init` function. 
-
-// Step 4 - The state of the game should be rendered to the user 
-// 4a) Create a function called `render`. 
-// 4b) Loop over `board` and for each element:  - Use the current index of the iteration to access the corresponding  square in the `openingEls` array. - Style that opening however you wish, dependent on the value // contained in the current cell being iterated over (`-1`, `1`, or/ `null`). 
-// 4c) Render a message based on the current game state:  - If winner has a value of `null` (meaning the game is still in progress), render whose turn it is.  - If `winner` is equal to `'T'` (tie), render a tie message.  - Otherwise, render a congratulatory message to the player that has // won. 
-
-// Step 5 - Define the required constants 
-// 5a) In a constant called `winningCombos` define the _____ possible winning combinations as an array of arrays. 
-// Step 6 - Handle a player clicking a square with a `handleClick` function 
-// 6a) Create a function called `handleClick`. It will have an `evt` // parameter. 
 // 6b) Attach an event listener to the game board (you can do this to each // one of the existing `openingEls` OR add a new cached element reference // that will allow you to take advantage of event bubbling). On the // `'click'` event, it should call the `handleClick` function // you created in 6a. 
 // 6c) Obtain the index of the opening that was clicked by "extracting" the // index from an `id` assigned to the element in the HTML. Assign this // to a constant called `opIdx`. 
 // 6d) If the `board` has a value at the `opIdx`, immediately `return` // because that square is already taken. Also, if `winner` is not `null` // immediately `return` because the game is over. 
