@@ -39,11 +39,11 @@ div {
   margin: 0 auto;
   display: block;
   padding: 8px;
-  font-family: 'Titan One', cursive;
-  color: #ffffff;
-  background-color: #e10000;
+  font-family: 'Bokor', cursive;
+  color: black;
+  background-color:#fb6b27;
   border: 10px;
-  border-radius: 15px;
+  border-radius: 24px;
 }
 
 

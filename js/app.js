@@ -60,7 +60,10 @@ mklogoImg.addEventListener('click', function(evt) {
   console.log(evt.target)
 })
 
-
+mklogoImg.addEventListener("click", function(evt){
+  mortalKombat.volume = .10
+  mortalKombat.play()
+})
 
 
 /*-------------------------------- Functions
@@ -177,10 +180,7 @@ let winnersCombo = bestCombo.some(function(value){
   return null
 }
 
-mklogoImg.addEventListener("click", function(evt){
-  mortalKombat.volume = .10
-  mortalKombat.play()
-})
+
 
 
 // Step 8 - Create Reset functionality 
