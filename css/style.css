@@ -4,7 +4,7 @@ body {
   height: 100vh;
   margin: 0;
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
   color: #fb6b27;
   text-align: center;
   font-size: 30px;
@@ -12,19 +12,23 @@ body {
 
 .flexbox-container {
   display: flex;
-  justify-content: center;
+  /* justify-content: space-center; */
+  /* flex-direction: row; */
 }
 
 .flex-box-item-1 {
   min-height: 100px;
+  order: 1;
 }
 
 .flex-box-item-2 {
   min-height: 100px;
+  order: 2;
 }
 
 .flex-box-item-3 {
   min-height: 100px;
+  order: 3;
 }
 
 section.board {
