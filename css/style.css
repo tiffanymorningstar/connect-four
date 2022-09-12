@@ -1,13 +1,11 @@
 body {
   background-color: #050400;
-
   font-family: 'Bokor', cursive;
   height: 100vh;
   margin: 0;
   display: flex;
   flex-direction: column;
   color: #fb6b27;
-  color: ;
   text-align: center;
   font-size: 30px;
 }

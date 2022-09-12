@@ -96,7 +96,7 @@ function init() {
   function render() {
     board.forEach(function (opening, idx) {
       if (opening === 1) {
-        openingEls[idx].classList = "Z"
+        openingEls[idx].classList = "#chip"
       } else if (opening === -1) {
         openingEls[idx].classList = "Q"
       } else {
