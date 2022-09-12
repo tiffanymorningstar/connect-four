@@ -81,17 +81,28 @@ function init() {
   render()
 }
 
-function render() {
-  board.forEach(function (opening, idx) {
-    if (opening === 1) {
-      openingEls[idx].textContent = "Z"
-    } else if (opening === -1) {
-      openingEls[idx].textContent = "Q"
-    } else {
-      openingEls[idx].textContent = ''
-    }
-  })
+// function render() {
+//   board.forEach(function (opening, idx) {
+//     if (opening === 1) {
+//       openingEls[idx].textContent = "Z"
+//     } else if (opening === -1) {
+//       openingEls[idx].textContent = "Q"
+//     } else {
+//       openingEls[idx].textContent = ''
+//     }
+//   })
 
+
+  function render() {
+    board.forEach(function (opening, idx) {
+      if (opening === 1) {
+        openingEls[idx].classList = "Z"
+      } else if (opening === -1) {
+        openingEls[idx].classList = "Q"
+      } else {
+        openingEls[idx].classList = ''
+      }
+    })
 
 
   if (winner === null) {
