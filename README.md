@@ -18,6 +18,6 @@ Technologies used:
 HTML, CSS, JavaScript
 
 Planned future enhancements:
-ADD HERE
+Ability for each player to choose different Mortal Kombat characters
 
 All images used in the game came from: https://imgbin.com, thank you!
