@@ -6,7 +6,7 @@ body {
   display: flex;
   color: #fb6b27;
   text-align: center;
-  font-size: 30px;
+  /* font-size: 30px; */
 }
 
 .flexbox-container {
@@ -66,23 +66,13 @@ div {
 }
 
 
-  /* .circleBase {
-  border-radius: 50%;
-} */
-
- /* .circle1 {
-  width: 100px;
-  height: 100px;
-  background: #4bc475;
-  border: 1px solid #000;
+.circle1 {
+  background-color: #d1b607;
 } 
 
 .circle2 {
-  width: 150px;
-  height: 150px;
-  background: #a1a1a1;
-  border: 1px solid #000;
-}  */
+  background-color: #e35a1f;
+} 
 
 h1 {
   font-size: 80px;
