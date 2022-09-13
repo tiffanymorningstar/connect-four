@@ -1,6 +1,4 @@
 
-
-/*-------------------------------- Constants --------------------------------*/
 let winningArray = [
   [0, 1, 2, 3], [41, 40, 39, 38], [7, 8, 9, 10],
   [34, 33, 32, 31], [14, 15, 16, 17], [27, 26, 25, 24],
@@ -30,12 +28,8 @@ let winningArray = [
 const mortalKombat = new Audio("../assets/audio/mkaudio.mp3")
 
 
-
-/*---------------------------- Variables (state) ----------------------------*/
-
 let board, turn, winner
 
-/*------------------------ Cached Element References ------------------------*/
 
 const openingEls = document.querySelectorAll(".board > div")
 console.log(openingEls)
@@ -50,17 +44,17 @@ const resetBtnEl = document.querySelector("#reset-button")
 const mklogoImg = document.querySelector("#mklogo")
 console.log(mklogoImg)
 
-/*----------------------------- Event Listeners -----------------------------*/
+
 boardEl.addEventListener('click', handleClick)
 
 
 resetBtnEl.addEventListener('click', init)
 
-mklogoImg.addEventListener('click', function(evt) {
+mklogoImg.addEventListener('click', function (evt) {
   console.log(evt.target)
 })
 
-mklogoImg.addEventListener("click", function(evt){
+mklogoImg.addEventListener("click", function (evt) {
   mortalKombat.volume = .10
   mortalKombat.play()
 })
@@ -96,16 +90,16 @@ function init() {
 //   })
 
 
-  function render() {
-    board.forEach(function (opening, idx) {
-      if (opening === 1) {
-        openingEls[idx].classList = "#chip"
-      } else if (opening === -1) {
-        openingEls[idx].classList = "Q"
-      } else {
-        openingEls[idx].classList = ''
-      }
-    })
+function render() {
+  board.forEach(function (opening, idx) {
+    if (opening === 1) {
+      openingEls[idx].classList = "#chip"
+    } else if (opening === -1) {
+      openingEls[idx].classList = ".circle1"
+    } else {
+      openingEls[idx].classList = 'circle2'
+    }
+  })
 
 
   if (winner === null) {
@@ -151,7 +145,7 @@ function handleClick(evt) {
       return
     }
   }
-  
+
   board[opIdx] = turn
 
   turn = turn * -1
@@ -162,19 +156,18 @@ function handleClick(evt) {
 function getWinner() {
   let bestCombo = []
   winningArray.forEach(function (combo) {
-    let comboValue = board[combo[0]]+ board [combo[1]] + board[combo[2]]+ board [combo[3]]
-    //Adding up opening positions, to use below to see if it equals four and there s a winner
+    let comboValue = board[combo[0]] + board[combo[1]] + board[combo[2]] + board[combo[3]]
+
     bestCombo.push(Math.abs(comboValue))
   })
-  //Why did we use Math.abs?
-//Using index to get a combo
 
-let winnersCombo = bestCombo.some(function(value){
-  return value === 4
-})
+
+  let winnersCombo = bestCombo.some(function (value) {
+    return value === 4
+  })
   if (winnersCombo === true) {
     return turn * -1
-  } else if (!board.some((value)=> value === null)){
+  } else if (!board.some((value) => value === null)) {
     return 'T'
   }
   return null
@@ -183,5 +176,4 @@ let winnersCombo = bestCombo.some(function(value){
 
 
 
-// Step 8 - Create Reset functionality 
-// 8a) Add a reset button to the HTML document. // 8b) Store the new reset button element in a constant named `resetBtnEl`. // 8c) Attach an event listener to the `resetBtnEl`. On the `'click'` event // it should call the `init` function you created in 3.
+
