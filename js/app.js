@@ -49,6 +49,7 @@ console.log(mklogoImg)
 
 boardEl.addEventListener('click', handleClick)
 
+tokenEl.addEventListener('click', correctPlacement)
 
 resetBtnEl.addEventListener('click', init)
 
@@ -122,12 +123,8 @@ function render() {
 }
 
 function handleClick(evt) {
-  //console.log(evt.target)
   let opIdx = parseInt(evt.target.id)
-  //console.log(opIdx)
-  //targeting id's of divs
-  //right now divs are strings, which is why we use parse int to turn into numbers
-
+  
   if (isNaN(opIdx)) {
     return
   }
@@ -136,11 +133,12 @@ function handleClick(evt) {
     return
   }
 
-
   if (board[opIdx]) {
     return
   }
 
+
+  //
   if (board[opIdx + 7] !== 1 && board[opIdx + 7] !== -1) {
     if (opIdx >= 35) {
     } else {
@@ -154,6 +152,28 @@ function handleClick(evt) {
   winner = getWinner()
   render()
 }
+
+//This function will return index of all available space
+const availSpace = correctPlacement(opIdx)
+for (let i = 0; i >= 0; i++)
+
+// 
+
+function correctPlacement (opIdx) {
+//identify column first
+// (the lowermost position that doesn't have a token)
+// then focus on adding the piece in the right place in state
+
+}
+//   board[availSpace] = playerTurn
+//   playerTurn = playerTurn * -1
+//   winner = getWinner(
+//     render()
+//   )
+// )
+
+
+
 
 function getWinner() {
   let bestCombo = []

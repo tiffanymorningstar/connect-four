@@ -2,7 +2,7 @@ body {
   background-color: #050400;
   font-family: 'Bokor', cursive;
   height: 120vh;
-  margin: 0;
+  margin: auto 0;
   display: flex;
   color: #fb6b27;
   text-align: center;
@@ -17,6 +17,7 @@ body {
 .flex-box-item-1 {
   min-height: 400px;
   font-size: 30px;
+  margin: auto;
 }
 
 .flex-box-item-2 {
