@@ -122,39 +122,42 @@ function render() {
 
 }
 
-function handleClick(evt) {
-  let opIdx = parseInt(evt.target.id)
+// function handleClick(evt) {
+//   let choiceIdx = parseInt(evt.target.id)
 
-  if (isNaN(opIdx)) {
+//   if (isNaN(choiceIdx)) {
+//     return
+//   }
+
+//   if (winner) {
+//     return
+//   }
+
+//   if (board[choiceIdx]) {
+//     return
+//   }
+// const opIdx = handlePlacement(idx)
+//   board[opIdx] = turn
+//   turn = turn * -1
+//   winner = getWinner()
+//   render()
+// }
+
+
+function handleClick(evt){
+  let choiceIdx = parseInt(evt.target.id.replace("openings", ""))
+  if (winner === 1 || winner === -1 || winner === "T") {
     return
   }
-  //just returning if someone clicks outside of board
-  if (winner) {
+  if (board[idx]){
     return
   }
-
-  if (board[opIdx]) {
-    return
-  }
-
-
-  //
-  if (board[opIdx + 7] !== 1 && board[opIdx + 7] !== -1) {
-    if (opIdx >= 35) {
-    } else {
-      return
-    }
-  }
-
-
-  // const corrIdx = haandlePlacement(idx)
-  board[opIdx] = turn
+  const corrIdx = handlePlacement(idx)
+  board[corrIdx] = turn
   turn = turn * -1
   winner = getWinner()
   render()
 }
-
-
 
 function handlePlacement(opIdx) {
   for (let i =(opIdx % 7)+35; i >= 0; i -= 7 ) {
@@ -163,15 +166,6 @@ function handlePlacement(opIdx) {
     }
   }
 }
-
-let openPosition = idx + 35
-for (let i = 0; i >= 0; i++)
-
-
-
-
-
-
 
 
   function getWinner() {

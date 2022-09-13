@@ -9,15 +9,12 @@ body {
   /* font-size: 30px; */
 }
 
-.flexbox-container {
-  display: flex;
-  min-height: 400px;
-}
-
 .flex-box-item-1 {
   min-height: 400px;
   font-size: 30px;
   margin: auto;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .flex-box-item-2 {
@@ -95,4 +92,15 @@ h4 {
   margin: -15px;
   font-size: 50px;
 
+}
+
+#player1,
+#player2 {
+  margin: 0;
+  width:100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: transparent;
+/* padding: 0 50px 0 50px; */
 }
