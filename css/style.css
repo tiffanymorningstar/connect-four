@@ -12,7 +12,7 @@ body {
 
 .flexbox-container {
   display: flex;
-  min-height: 600px;
+  min-height: 500px;
 }
 
 .flex-box-item-1 {
