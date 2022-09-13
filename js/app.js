@@ -124,7 +124,7 @@ function render() {
 
 function handleClick(evt) {
   let opIdx = parseInt(evt.target.id)
-  
+
   if (isNaN(opIdx)) {
     return
   }
@@ -146,55 +146,54 @@ function handleClick(evt) {
     }
   }
 
-  board[opIdx] = turn
 
+  // const corrIdx = haandlePlacement(idx)
+  board[opIdx] = turn
   turn = turn * -1
   winner = getWinner()
   render()
 }
 
-//This function will return index of all available space
-const availSpace = correctPlacement(opIdx)
+
+
+function handlePlacement(opIdx) {
+  for (let i =(opIdx % 7)+35; i >= 0; i -= 7 ) {
+    if (board[i] === null) {
+      return i
+    }
+  }
+}
+
+let openPosition = idx + 35
 for (let i = 0; i >= 0; i++)
 
-// 
-
-function correctPlacement (opIdx) {
-//identify column first
-// (the lowermost position that doesn't have a token)
-// then focus on adding the piece in the right place in state
-
-}
-//   board[availSpace] = playerTurn
-//   playerTurn = playerTurn * -1
-//   winner = getWinner(
-//     render()
-//   )
-// )
 
 
 
 
-function getWinner() {
-  let bestCombo = []
-  // titleEl.className = 'animate__animated animate__bounce'
-  winningArray.forEach(function (combo) {
-    let comboValue = board[combo[0]] + board[combo[1]] + board[combo[2]] + board[combo[3]]
-
-    bestCombo.push(Math.abs(comboValue))
-  })
 
 
-  let winnersCombo = bestCombo.some(function (value) {
-    return value === 4
-  })
-  if (winnersCombo === true) {
-    return turn * -1
-  } else if (!board.some((value) => value === null)) {
-    return 'T'
+
+  function getWinner() {
+    let bestCombo = []
+    // titleEl.className = 'animate__animated animate__bounce'
+    winningArray.forEach(function (combo) {
+      let comboValue = board[combo[0]] + board[combo[1]] + board[combo[2]] + board[combo[3]]
+
+      bestCombo.push(Math.abs(comboValue))
+    })
+
+
+    let winnersCombo = bestCombo.some(function (value) {
+      return value === 4
+    })
+    if (winnersCombo === true) {
+      return turn * -1
+    } else if (!board.some((value) => value === null)) {
+      return 'T'
+    }
+    return null
   }
-  return null
-}
 
 
 
