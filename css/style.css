@@ -1,10 +1,9 @@
 body {
   background-color: #050400;
   font-family: 'Bokor', cursive;
-  height: 160vh;
+  height: 120vh;
   margin: 0;
   display: flex;
-  /* flex-direction: column; */
   color: #fb6b27;
   text-align: center;
   font-size: 30px;
@@ -12,23 +11,23 @@ body {
 
 .flexbox-container {
   display: flex;
-  min-height: 500px;
+  min-height: 400px;
 }
 
 .flex-box-item-1 {
-  min-height: 600px;
+  min-height: 400px;
   order: 1;
 }
 
 .flex-box-item-2 {
-  min-height:600px;
+  min-height: 400px;
   order: 2;
   font-size: 10px;
 
 }
 
 .flex-box-item-3 {
-  min-height: 600px;
+  min-height: 400px;
   order: 3;
 }
 
@@ -69,7 +68,7 @@ div {
 }
 
 
-.circleBase {
+/* .circleBase {
   border-radius: 50%;
 }
 
@@ -78,27 +77,21 @@ div {
   height: 100px;
   background: #4bc475;
   border: 1px solid #000;
-}
+} */
 
-.circle2 {
+/* .circle2 {
   width: 150px;
   height: 150px;
   background: #a1a1a1;
   border: 1px solid #000;
-}
-
-/* img {
-  display: block;
-  margin: auto;
 } */
 
 h1 {
   font-size: 80px;
-  margin: 5px;
+  margin: -6px;
 }
 
 h2 {
-  font-size: 40px;
-  margin: 20px;
-  padding: 5px;
+  font-size: 30px;
+  margin: -2px;
 }
