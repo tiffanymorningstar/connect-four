@@ -44,6 +44,8 @@ const resetBtnEl = document.querySelector("#reset-button")
 const mklogoImg = document.querySelector("#mklogo")
 console.log(mklogoImg)
 
+// const playerEl = document.querySelector('#liukang');
+
 
 boardEl.addEventListener('click', handleClick)
 
@@ -78,28 +80,28 @@ function init() {
   render()
 }
 
-// function render() {
-//   board.forEach(function (opening, idx) {
-//     if (opening === 1) {
-//       openingEls[idx].textContent = "Z"
-//     } else if (opening === -1) {
-//       openingEls[idx].textContent = "Q"
-//     } else {
-//       openingEls[idx].textContent = ''
-//     }
-//   })
-
-
 function render() {
   board.forEach(function (opening, idx) {
     if (opening === 1) {
-      openingEls[idx].classList = "#chip"
+      openingEls[idx].textContent = "Z"
     } else if (opening === -1) {
-      openingEls[idx].classList = ".circle1"
+      openingEls[idx].textContent = "Q"
     } else {
-      openingEls[idx].classList = 'circle2'
+      openingEls[idx].textContent = ''
     }
   })
+
+
+// function render() {
+//   board.forEach(function (opening, idx) {
+//     if (opening === 1) {
+//       openingEls[idx].classList = "#chip"
+//     } else if (opening === -1) {
+//       openingEls[idx].classList = ".circle1"
+//     } else {
+//       openingEls[idx].classList = 'circle2'
+//     }
+//   })
 
 
   if (winner === null) {
@@ -155,6 +157,7 @@ function handleClick(evt) {
 
 function getWinner() {
   let bestCombo = []
+  // titleEl.className = 'animate__animated animate__bounce'
   winningArray.forEach(function (combo) {
     let comboValue = board[combo[0]] + board[combo[1]] + board[combo[2]] + board[combo[3]]
 
