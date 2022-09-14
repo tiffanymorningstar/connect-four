@@ -32,7 +32,6 @@ let board, turn, winner
 
 
 const openingEls = document.querySelectorAll(".board > div")
-console.log(openingEls)
 
 const messageEls = document.querySelector("#message")
 
@@ -42,14 +41,11 @@ const resetBtnEl = document.querySelector("#reset-button")
 
 
 const mklogoImg = document.querySelector("#mklogo")
-console.log(mklogoImg)
-
-// const playerEl = document.querySelector('#liukang');
 
 
 boardEl.addEventListener('click', handleClick)
 
-tokenEl.addEventListener('click', correctPlacement)
+openingEls.addEventListener('click', handlePlacement)
 
 resetBtnEl.addEventListener('click', init)
 
@@ -80,17 +76,6 @@ function init() {
   winner = null
   render()
 }
-
-// function render() {
-//   board.forEach(function (opening, idx) {
-//     if (opening === 1) {
-//       openingEls[idx].textContent = "Z"
-//     } else if (opening === -1) {
-//       openingEls[idx].textContent = "Q"
-//     } else {
-//       openingEls[idx].textContent = ''
-//     }
-//   })
 
 
 function render() {
@@ -143,34 +128,35 @@ function render() {
 //   render()
 // }
 
-
-function handleClick(evt){
-  let choiceIdx = parseInt(evt.target.id.replace("openings", ""))
-  if (winner === 1 || winner === -1 || winner === "T") {
-    return
-  }
-  if (board[idx]){
-    return
-  }
-  const corrIdx = handlePlacement(idx)
-  board[corrIdx] = turn
-  turn = turn * -1
-  winner = getWinner()
-  render()
-}
-
-function handlePlacement(opIdx) {
-  for (let i =(opIdx % 7)+35; i >= 0; i -= 7 ) {
+function handlePlacement(idx) {
+  for (let i =(idx % 7)+35; i >= 0; i -= 7 ) {
     if (board[i] === null) {
       return i
     }
   }
 }
 
+function handleClick(evt){
+  let idx = parseInt(evt.target.id.replace("openings", ""))
+  if (winner === 1 || winner === -1 || winner === "T") {
+    return
+  }
+  if (board[idx]){
+    return
+  }
+  const opIdx = handlePlacement(idx)
+  board[opIdx] = turn
+  turn = turn * -1
+  winner = getWinner()
+  render()
+}
+
+
+
 
   function getWinner() {
     let bestCombo = []
-    // titleEl.className = 'animate__animated animate__bounce'
+ 
     winningArray.forEach(function (combo) {
       let comboValue = board[combo[0]] + board[combo[1]] + board[combo[2]] + board[combo[3]]
 
