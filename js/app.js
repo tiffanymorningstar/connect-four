@@ -26,7 +26,7 @@ let winningArray = [
 ];
 
 const mortalKombat = new Audio("../assets/audio/mkaudio.mp3")
-
+const toastySurprise = new Audio("../assets/audio/toasty.mp3")
 
 let board, turn, winner
 
@@ -42,20 +42,28 @@ const resetBtnEl = document.querySelector("#reset-button")
 
 const mklogoImg = document.querySelector("#mklogo")
 
+const liuKangImg = document.querySelector("#liu-kang")
+
 const titleEl = document.querySelector('#title')
 
 
 boardEl.addEventListener('click', handleClick)
 
-// openingEls.addEventListener('click', handlePlacement)
 openingEls.forEach((circle)=> {
   circle.addEventListener('click', handlePlacement)
   })
 
-
-
-
 resetBtnEl.addEventListener('click', init)
+
+
+liuKangImg.addEventListener('click', function (evt) {
+  console.log(evt.target)
+})
+
+liuKangImg.addEventListener("click", function (evt) {
+  toastySurprise.volume = .10
+  toastySurprise.play()
+})
 
 mklogoImg.addEventListener('click', function (evt) {
   console.log(evt.target)
@@ -66,9 +74,6 @@ mklogoImg.addEventListener("click", function (evt) {
   mortalKombat.play()
 })
 
-
-/*-------------------------------- Functions
---------------------------------*/
 init()
 
 function init() {
