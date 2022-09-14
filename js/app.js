@@ -42,6 +42,8 @@ const resetBtnEl = document.querySelector("#reset-button")
 
 const mklogoImg = document.querySelector("#mklogo")
 
+const titleEl = document.querySelector('#title')
+
 
 boardEl.addEventListener('click', handleClick)
 
@@ -64,6 +66,7 @@ mklogoImg.addEventListener("click", function (evt) {
 init()
 
 function init() {
+  titleEl.className = "";
   board = [
     null, null, null, null, null, null, null,
     null, null, null, null, null, null, null,
@@ -101,8 +104,10 @@ function render() {
     messageEls.textContent = 'It is a Stalemate!'
   } else if (winner === 1) {
     messageEls.textContent = 'Player 1 wins, FLAWLESS VICTORY'
+    titleEl.className = 'animate__animated animate__bounce'
   } else if (winner === -1) {
     messageEls.textContent = 'Player 2 wins, FLAWLESS VICTORY'
+    titleEl.className = 'animate__animated animate__bounce'
   }
 
 }
