@@ -27,6 +27,7 @@ let winningArray = [
 
 const mortalKombat = new Audio("../assets/audio/mkaudio.mp3")
 const toastySurprise = new Audio("../assets/audio/toasty.mp3")
+const getOverHere = new Audio("../assets/audio/getoverhere.mp3")
 
 let board, turn, winner
 
@@ -44,6 +45,8 @@ const mklogoImg = document.querySelector("#mklogo")
 
 const liuKangImg = document.querySelector("#liu-kang")
 
+const scorpionImg =document.querySelector("#its-scorpion")
+
 const titleEl = document.querySelector('#title')
 
 
@@ -54,6 +57,15 @@ openingEls.forEach((circle)=> {
   })
 
 resetBtnEl.addEventListener('click', init)
+
+scorpionImg.addEventListener('click', function (evt) {
+  console.log(evt.target)
+})
+
+scorpionImg.addEventListener("click", function (evt) {
+  getOverHere.volume = .10
+  getOverHere.play()
+})
 
 
 liuKangImg.addEventListener('click', function (evt) {
