@@ -47,7 +47,13 @@ const titleEl = document.querySelector('#title')
 
 boardEl.addEventListener('click', handleClick)
 
-openingEls.addEventListener('click', handlePlacement)
+// openingEls.addEventListener('click', handlePlacement)
+openingEls.forEach((circle)=> {
+  circle.addEventListener('click', handlePlacement)
+  })
+
+
+
 
 resetBtnEl.addEventListener('click', init)
 
