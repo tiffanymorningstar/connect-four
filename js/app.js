@@ -1,5 +1,5 @@
 
-let winningArray = [
+let allWinningCombos = [
   [0, 1, 2, 3], [41, 40, 39, 38], [7, 8, 9, 10],
   [34, 33, 32, 31], [14, 15, 16, 17], [27, 26, 25, 24],
   [21, 22, 23, 24], [20, 19, 18, 17], [28, 29, 30, 31],
@@ -31,60 +31,43 @@ const getOverHere = new Audio("../assets/audio/getoverhere.mp3")
 
 let board, turn, winner
 
-
 const openingEls = document.querySelectorAll(".board > div")
-
 const messageEls = document.querySelector("#message")
-
 const boardEl = document.querySelector('.board')
-
 const resetBtnEl = document.querySelector("#reset-button")
-
-
 const mklogoImg = document.querySelector("#mklogo")
-
 const liuKangImg = document.querySelector("#liu-kang")
-
-const scorpionImg =document.querySelector("#its-scorpion")
-
+const scorpionImg = document.querySelector("#its-scorpion")
 const titleEl = document.querySelector('#title')
 
 
 boardEl.addEventListener('click', handleClick)
-
-openingEls.forEach((circle)=> {
+openingEls.forEach((circle) => {
   circle.addEventListener('click', handlePlacement)
-  })
-
+})
 resetBtnEl.addEventListener('click', init)
-
 scorpionImg.addEventListener('click', function (evt) {
   console.log(evt.target)
 })
-
 scorpionImg.addEventListener("click", function (evt) {
   getOverHere.volume = .10
   getOverHere.play()
 })
-
-
 liuKangImg.addEventListener('click', function (evt) {
   console.log(evt.target)
 })
-
 liuKangImg.addEventListener("click", function (evt) {
   toastySurprise.volume = .10
   toastySurprise.play()
 })
-
 mklogoImg.addEventListener('click', function (evt) {
   console.log(evt.target)
 })
-
 mklogoImg.addEventListener("click", function (evt) {
   mortalKombat.volume = .10
   mortalKombat.play()
 })
+
 
 init()
 
@@ -103,7 +86,6 @@ function init() {
   render()
 }
 
-
 function render() {
   board.forEach(function (opening, idx) {
     if (opening === 1) {
@@ -114,7 +96,6 @@ function render() {
       openingEls[idx].className = ('openings')
     }
   })
-
 
   if (winner === null) {
     if (turn === 1) {
@@ -136,19 +117,19 @@ function render() {
 }
 
 function handlePlacement(idx) {
-  for (let i =(idx % 7)+35; i >= 0; i -= 7 ) {
+  for (let i = (idx % 7) + 35; i >= 0; i -= 7) {
     if (board[i] === null) {
       return i
     }
   }
 }
 
-function handleClick(evt){
+function handleClick(evt) {
   let idx = parseInt(evt.target.id.replace("openings", ""))
   if (winner === 1 || winner === -1 || winner === "T") {
     return
   }
-  if (board[idx]){
+  if (board[idx]) {
     return
   }
   const opIdx = handlePlacement(idx)
@@ -158,29 +139,25 @@ function handleClick(evt){
   render()
 }
 
+function getWinner() {
+  let bestCombo = []
 
+  allWinningCombos.forEach(function (combo) {
+    let comboValue = board[combo[0]] + board[combo[1]] + board[combo[2]] + board[combo[3]]
 
+    bestCombo.push(Math.abs(comboValue))
+  })
 
-  function getWinner() {
-    let bestCombo = []
- 
-    winningArray.forEach(function (combo) {
-      let comboValue = board[combo[0]] + board[combo[1]] + board[combo[2]] + board[combo[3]]
-
-      bestCombo.push(Math.abs(comboValue))
-    })
-
-
-    let winnersCombo = bestCombo.some(function (value) {
-      return value === 4
-    })
-    if (winnersCombo === true) {
-      return turn * -1
-    } else if (!board.some((value) => value === null)) {
-      return 'T'
-    }
-    return null
+  let winnersCombo = bestCombo.some(function (value) {
+    return value === 4
+  })
+  if (winnersCombo === true) {
+    return turn * -1
+  } else if (!board.some((value) => value === null)) {
+    return 'T'
   }
+  return null
+}
 
 
 
