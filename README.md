@@ -16,9 +16,9 @@ Planning Materials:
 https://docs.google.com/document/d/1KkXGwz0rftEceeByRu3gWuFCExz-xGPtOhXj4wxNdEM/edit?usp=sharing
 
 Screenshots of game:
-ADD HERE
+[![Game Screencap](/assets/images/mk-screen-shot.png) (https://i.imgur.com/0CLgTrZ.png)]
 
-Technologies used:
+Technologies used:git add '
 HTML, CSS, JavaScript
 
 Planned future enhancements:
