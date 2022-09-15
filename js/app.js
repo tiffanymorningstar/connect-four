@@ -135,27 +135,6 @@ function render() {
 
 }
 
-// function handleClick(evt) {
-//   let choiceIdx = parseInt(evt.target.id)
-
-//   if (isNaN(choiceIdx)) {
-//     return
-//   }
-
-//   if (winner) {
-//     return
-//   }
-
-//   if (board[choiceIdx]) {
-//     return
-//   }
-// const opIdx = handlePlacement(idx)
-//   board[opIdx] = turn
-//   turn = turn * -1
-//   winner = getWinner()
-//   render()
-// }
-
 function handlePlacement(idx) {
   for (let i =(idx % 7)+35; i >= 0; i -= 7 ) {
     if (board[i] === null) {
